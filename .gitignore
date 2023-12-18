@@ -1,9 +1,6 @@
 /*/.ipynb_checkpoints
 /*/*.pyd
-/*.pyd
+/*/*/*.pyd
 /*/*/build
-/*/build
-/*/*.cpp
-/*.cpp
-/*/*.c
-/*.c
+/*/*/*.cpp
+/*/*/*.c

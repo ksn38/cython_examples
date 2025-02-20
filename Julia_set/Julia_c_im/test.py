@@ -24,7 +24,7 @@ def plot1(i, real, img, my_cmap):
     jl = Julia_c_im.calc_julia((real + img), 1.4)
 
     fig, ax = plt.subplots()
-    fig.set_size_inches(12.90, 27.96)
+    fig.set_size_inches(14.40, 25.60)
     fig.patch.set_visible(False)
     ax.axis('off')
     fig.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=0, hspace=0)
@@ -34,4 +34,4 @@ def plot1(i, real, img, my_cmap):
     plt.savefig('F:\\Temp\\tmp/{:04d}.png'.format(i))
     plt.clf()
     
-plot1(0, -0.1, -0.649j, my_cmap)
+plot1(1, -0.1, -0.649j, my_cmap)

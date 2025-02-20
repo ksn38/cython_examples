@@ -28,17 +28,17 @@ cdef double escape(double complex z,
 @wraparound(False)
 def calc_julia(double complex c, double bound=2.1, double z_max=4.0, int n_max=1000):
     cdef:
-        double step = 2.0 * bound / 1290
+        double step = 2.0 * bound / 1440
         int i, j
         double complex z
         double real, imag
         double [:, ::1] counts
 
-    counts = np.zeros((2796 + 1, 1290 + 1), dtype=np.double)
+    counts = np.zeros((2560 + 1, 1440 + 1), dtype=np.double)
 
-    for i in prange(2796 + 1, nogil=True, schedule='static', chunksize=1):
-        real = -bound - 1.7 + i * step
-        for j in range(1290 + 1):
+    for i in prange(2560 + 1, nogil=True, schedule='static', chunksize=1):
+        real = -bound - 1.1 + i * step
+        for j in range(1440 + 1):
             imag = -bound + j * step
             z = real + imag * 1j
             counts[i,j] = escape(z, c, z_max, n_max)

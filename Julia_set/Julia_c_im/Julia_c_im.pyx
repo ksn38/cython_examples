@@ -9,7 +9,6 @@ import numpy as np
 cdef inline double norm2(double complex z) nogil:
     return z.real * z.real + z.imag * z.imag
 
-
 cdef double escape(double complex z,
                 double complex c,
                 double z_max,
@@ -25,25 +24,21 @@ cdef double escape(double complex z,
 
     return z.imag
 
-
 @boundscheck(False)
 @wraparound(False)
-def calc_julia(int resolution, double complex c,
-               double bound=2.1, double z_max=4.0, int n_max=1000):
-
+def calc_julia(double complex c, double bound=2.1, double z_max=4.0, int n_max=1000):
     cdef:
-        double step = 2.0 * bound / resolution
+        double step = 2.0 * bound / 1290
         int i, j
         double complex z
         double real, imag
         double [:, ::1] counts
 
-    counts = np.zeros((resolution+1, resolution+1), dtype=np.double)
+    counts = np.zeros((2796 + 1, 1290 + 1), dtype=np.double)
 
-    for i in prange(resolution + 1, nogil=True,
-                    schedule='static', chunksize=1):
-        real = -bound + i * step
-        for j in range(resolution + 1):
+    for i in prange(2796 + 1, nogil=True, schedule='static', chunksize=1):
+        real = -bound - 1.7 + i * step
+        for j in range(1290 + 1):
             imag = -bound + j * step
             z = real + imag * 1j
             counts[i,j] = escape(z, c, z_max, n_max)

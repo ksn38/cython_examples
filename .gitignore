@@ -4,3 +4,5 @@
 /*/*/build
 /*/*/*.cpp
 /*/*/*.c
+!/*/*/mandelbrot.c
+/*/*/*.exe
